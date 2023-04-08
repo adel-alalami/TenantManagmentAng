@@ -1,0 +1,95 @@
+<div class="card">
+  <div class="card-body">
+    <div class="user-profile">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="user-photo m-b-30">
+            <h3>{{ company?.name }}</h3>
+            <div class="img-space" *ngIf="company?.logo != null">
+              <ng-container>
+                <img
+                  [src]="company?.logo"
+                  style="width: 350px; height: 300px"
+                />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <h5>General Information</h5>
+          <!-- <div>
+            <span class="fw-bold">Industry: {{ company?.industryId }}</span>
+            <span></span>
+          </div>
+          <div class="email-content">
+             <span class="fw-bold">Size: {{ company?.sizeId }}</span>
+            <span></span>
+          </div> -->
+          <div class="website-content">
+            <span class="fw-bold">Founded: {{ company?.founded }} </span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <h5>Contact Info</h5>
+          <div>
+            <span class="fw-bold">Email: {{ company?.email }}</span>
+            <span></span>
+          </div>
+          <div class="email-content">
+            <span class="fw-bold"
+              >Phone Number: {{ company?.phoneNumber }}
+            </span>
+            <span></span>
+          </div>
+          <div class="website-content">
+            <span class="fw-bold">Website: {{ company?.website }} </span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-5">
+  <div class="card-title">
+    <h3>Suggestion and Complaints Form</h3>
+  </div>
+  <div class="card-body">
+    <form
+      action=""
+      class="form-group"
+      [formGroup]="createSuggestionForm"
+      (ngSubmit)="createSuggestion(createSuggestionForm.value)"
+    >
+      <div class="row">
+        <div class="col-6 mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Subject"
+            formControlName="subject"
+          />
+        </div>
+      </div>
+
+      <div class="form-floating">
+        <textarea
+          class="form-control"
+          id="floatingTextarea2"
+          formControlName="description"
+          style="height: 100px"
+        ></textarea>
+        <label for="floatingTextarea2">Description</label>
+      </div>
+      <input
+        type="submit"
+        value="Create"
+        class="btn btn-primary mt-3"
+        [disabled]="createSuggestionForm.invalid"
+      />
+    </form>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-title p-2 d-flex justify-content-center">
+    <a
+      class="btn btn-primary d-inline-block mb-2 mr-5"
+      (click)="companyForm()"
+      >Create New Company</a
+    >
+    <a
+      class="btn btn-success d-inline-block mb-2"
+      style="margin-left: 5px"
+      (click)="exportToExcel()"
+      >Export To Excel</a
+    >
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Name</th>
+            <th>Overview</th>
+            <th>Founded</th>
+            <th>Industry</th>
+            <th>Size</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies">
+            <td>
+              <div class="img-space" *ngIf="company.logo != null">
+                <ng-container>
+                  <img
+                    [src]="company.logo"
+                    style="width: 100px; height: 100px"
+                  />
+                </ng-container>
+              </div>
+            </td>
+            <td>{{ company.name }}</td>
+            <td>{{ company.overview }}</td>
+            <td>{{ company.founded }}</td>
+            <td>{{ company.industryName }}</td>
+            <td>{{ company.sizeName }}</td>
+            <td>{{ company.phoneNumber }}</td>
+            <td><a href="company.website ">{{ company.website }}</a></td>
+            <td><button class="btn btn-secondary" (click)="Edit(company.id)">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!-- /# sidebar -->
+
+<nav
+  class="navbar navbar-expand bg-dark navbar-dark mb-5"
+  *ngIf="this.authService.isLoggedIn()"
+>
+  <div class="container-fluid">
+    <div class="float-left">
+      <div class="navbar-nav">
+        <a
+          class="nav-link active ml-5 mr-5"
+          *ngIf="!this.authService.isCompany()"
+          (click)="goToCompanies()"
+          >Companies</a
+        >
+
+        <a
+          class="nav-link active"
+          *ngIf="!this.authService.isCompany()"
+          (click)="goToSuggestions()"
+        >
+          Suggestions
+        </a>
+      </div>
+    </div>
+    <div class="float-right">
+      <div class="navbar-nav">
+        <button
+          type="submit"
+          class="nav-link btn btn-link text-danger font-weight-bold mr-5"
+          (click)="logout()"
+        >
+          <i class="fa-solid fa-sign-out"></i>Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="content-wrap">
+  <div class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- <app-company-form></app-company-form> -->
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
